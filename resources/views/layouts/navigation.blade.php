@@ -578,15 +578,12 @@
                                                             <p class="mb-0 font-size-14">Control your privacy
                                                                 parameters.</p>
                                                         </div>
-                                                    </a>\\
+                                                    </a>
                                                 </div>
 
                                             </div>
 
-                                            <a class="right-ic btn btn-primary btn-block   position-relative iq-logout"
-                                                href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                this.closest('form').submit(); " role="button">
-
+                                            <a href="{{ route('logout') }}" class="right-ic btn btn-primary btn-block   position-relative iq-logout" onclick="" role="button">
                                                 {{ __('Log out') }}
                                             </a>
 

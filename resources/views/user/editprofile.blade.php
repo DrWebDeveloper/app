@@ -63,12 +63,12 @@
                                     </div>
                                     <div class=" row align-items-center">
                                         <div class="form-group col-sm-6">
-                                            <label for="fname">First Name:</label>
-                                            <input type="text" class="form-control" id="fname" value="Barry">
+                                            <label for="name">Full Name:</label>
+                                            <input type="text" class="form-control" id="name" value="{{ $user->name }}">
                                         </div>
                                         <div class="form-group col-sm-6">
-                                            <label for="lname">Last Name:</label>
-                                            <input type="text" class="form-control" id="lname" value="Tech">
+                                            <label for="email">Email:</label>
+                                            <input type="email" class="form-control" id="email" value="{{ $user->email }}">
                                         </div>
                                         <div class="form-group col-sm-6">
                                             <label for="uname">User Name:</label>

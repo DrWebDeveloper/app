@@ -71,6 +71,8 @@
                         </div>
                     </div>
                 </footer>
+                <!-- jQuery Load -->
+                <script src="{{ url('public/assets/js/jquery.js')}}"></script>
                 <!-- Backend Bundle JavaScript -->
                 <script src="{{ url('public/assets/js/backend-bundle.min.js')}}"></script>
 

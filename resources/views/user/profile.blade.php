@@ -6,19 +6,27 @@
 <br>
 <br>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 col-md-10 col-sm-6">
+            <div class="card card-block card-stretch card-height">
+                <div class="card-body">
+                    <h3 class="mb-3">{{ $user->name }}</h3>
+                    <span>Free Member</span>
+                </div>
+            </div>
+        </div>
+        {{-- <div class="col-lg-12">
             <div class="card car-transparent">
                 <div class="card-body p-0">
                     <div class="profile-image position-relative">
                         <img src="../assets/images/page-img/profile.png" class="img-fluid rounded w-100" alt="">
                     </div>
                     <div class="profile-overly">
-                        <h3>Bart Ender</h3>
+                        <h3>{{ $user->name }}</h3>
                         <span>Sr. Manager</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-block card-stretch card-height">
                 <div class="card-body">

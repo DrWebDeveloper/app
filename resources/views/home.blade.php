@@ -12,15 +12,26 @@
                             <div class="card-body">
                                 <div class="">
                                     <div class="">
-                                        <h2 class="mb-2">Hi, Julien Leclerc</h2>
+                                        <h2 class="mb-2">Hi, {{ Auth::user()->name ?? 'Guest'}}</h2>
                                         <p class="pb-3">Welcome on Prospects Express dashboard. It’s good to have you here!</p>
                                     </div>
                                     <div class="d-flex flex-wrap align-items-center mt-4">
+                                        @auth()
                                         <a class="btn btn-lg btn-primary mr-3" href="{{ route('appointments') }}">My
                                             Appointment</a>
                                         <a class="btn btn-lg btn-transparent explore"
                                             href="{{ route('create') }}">Create<i
                                                 class="ri-arrow-right-line ml-2 mt-1"></i></a>
+                                        @endauth
+                                        @guest()
+                                        <a class="btn btn-lg btn-primary mr-3" href="{{ route('appointments') }}">Create
+                                            Appointment</a>
+                                        <a class="btn btn-lg btn-transparent explore"
+                                            href="{{ route('register') }}">Join Us<i
+                                                class="ri-arrow-right-line ml-2 mt-1"></i></a>
+                                        @endguest
+
+
                                     </div>
                                 </div>
                                 <div class="subs-image">

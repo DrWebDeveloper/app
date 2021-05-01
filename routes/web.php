@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -29,8 +31,8 @@ Route::get('plans', function () {
 })->name('plans');
 
 Route::get('account', function () {
-    return view('account');
-})->name('account');
+    return view('user.account');
+})->middleware(['auth'])->name('account');
 
 Route::get('help', function () {
     return view('help');
@@ -49,15 +51,26 @@ Route::get('login', function () {
     return view('user.login');
 })->middleware('guest')->name('login');
 
+Route::get('/logout', function (Request $request) {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect('/');
+})->middleware(['auth'])->name('logout');
+
+Route::get('register', function () {
+    return view('user.register');
+})->middleware('guest')->name('register');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-Route::get('/profile', function () {
-    return view('user.profile');
-})->name('profile');
-Route::get('/editprofile', function () {
-    return view('user.editprofile');
-})->name('editprofile');
+
+
+
+Route::get('/profile', [UserController::class, 'profile'])->middleware(['auth'])->name('profile');
+Route::get('/editprofile', [UserController::class, 'editprofile'])->middleware(['auth'])->name('editprofile');
+
 Route::get('/settings', function () {
     return view('user.settings');
 })->name('settings');
