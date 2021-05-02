@@ -9,7 +9,7 @@
         <div class="col-lg-12 col-md-10 col-sm-6">
             <div class="card card-block card-stretch card-height">
                 <div class="card-body">
-                    <h3 class="mb-3">{{ $user->name }}</h3>
+                    <h3 class="mb-3">{{ Auth::user()->name }}</h3>
                     <span>Free Member</span>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                         <img src="../assets/images/page-img/profile.png" class="img-fluid rounded w-100" alt="">
                     </div>
                     <div class="profile-overly">
-                        <h3>{{ $user->name }}</h3>
+                        <h3>{{ Auth::user()->name }}</h3>
                         <span>Sr. Manager</span>
                     </div>
                 </div>
@@ -475,7 +475,7 @@
                                             d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                                     </svg>
                                 </i>
-                                <p class="mb-0 font-size-16 line-height">https://app.prospects-express.com
+                                <p class="mb-0 font-size-16 line-height">{{ config('app.url') }}
                                 </p>
                             </a>
                         </li>

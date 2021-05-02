@@ -6,7 +6,7 @@
             <a href="{{ route('home') }}" class="header-logo">
 
                 <img src="{{ url('public/assets/images/logo.png') }}" class="img-fluid  light-logo" alt="logo">
-                <h5 class="logo-title text-white ml-3 mt-1">{{ config('app.name') }}</h5>
+                <h5 class="logo-title text-white ml-3 mt-1">Admin Panel</h5>
                 <!--
 <img src="" class="img-fluid  light-logo" alt="logo"><h5 class="logo-title ml-3 mt-1">Prospects Express</h5>
  -->
@@ -28,15 +28,15 @@
                 <ul id="iq-sidebar-toggle" class="iq-menu">
 
                     <li class="{{ \Request::route()->getName() == 'home' ? 'active' : '' }}">
-                        <a href="{{ route('home') }}" class="svg-icon">
+                        <a href="{{ route('admindashboard') }}" class="svg-icon">
                             <i class="las la-home"></i>
-                            <span class="">{{ __('all.home') }}</span>
+                            <span class="">{{ __('Dashboard') }}</span>
                         </a>
                     </li>
 
                     <li class="{{ \Request::route()->getName() == 'plans' ? 'active' : '' }}">
-                        <a href="{{ route('plans') }}">
-                            <i class="las la-coins"></i><span>Plan</span>
+                        <a href="{{ route('adminplans') }}">
+                            <i class="las la-coins"></i><span>Plan Settings</span>
                         </a>
                     </li>
 
@@ -516,13 +516,9 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>@auth()
-                                @if (Auth::user()->admin == 1)
-                                <a href="{{ route('admin') }}">Admin Panel</a>
-                                @endif
+                            <li>
+                                <a href="{{ route('home') }}" target="_blank">View Website</a>
 
-
-                                @endauth
 </li>
                             <li class="nav-item nav-icon dropdown">
 

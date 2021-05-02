@@ -11,7 +11,7 @@ class UserController extends Controller
     public function profile(){
         $id = Auth::id();
         $user = User::findOrfail($id);
-        return view('user.profile',['user'=>$user]);
+        return view('user.dashboard',['user'=>$user]);
     }
     public function editprofile(){
         $id = Auth::id();
@@ -26,6 +26,11 @@ class UserController extends Controller
 
     // User's Account
     public function account(){
+
+    }
+    // Subscription
+    public function subscribe($pid){
+        return view('subscribe',['pid'=>$pid]);
 
     }
 

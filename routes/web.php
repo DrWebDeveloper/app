@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -63,12 +64,16 @@ Route::get('register', function () {
 })->middleware('guest')->name('register');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('user.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+// Admin Routes
+Route::get('/admin', [AdminController::class,'dashboard'])->middleware(['auth'])->name('admin');
+Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->middleware(['auth'])->name('admindashboard');
+Route::get('/admin/plans', [AdminController::class,'plans'])->middleware(['auth'])->name('adminplans');
 
 
-Route::get('/profile', [UserController::class, 'profile'])->middleware(['auth'])->name('profile');
+// Route::get('/profile', [UserController::class, 'profile'])->middleware(['auth'])->name('profile');
 Route::get('/editprofile', [UserController::class, 'editprofile'])->middleware(['auth'])->name('editprofile');
 
 Route::get('/settings', function () {
@@ -87,6 +92,9 @@ Route::get('/form/create', function () {
 Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 })->name('policy');
+
+Route::get('/subscribe/{pid}', [UserController::class, 'subscribe'])->middleware('auth')->name('subscribe');
+
 Route::get('/tos', function () {
     return view('tos');
 })->name('tos');
