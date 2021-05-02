@@ -70,7 +70,8 @@ Route::get('/dashboard', function () {
 // Admin Routes
 Route::get('/admin', [AdminController::class,'dashboard'])->middleware(['auth'])->name('admin');
 Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->middleware(['auth'])->name('admindashboard');
-Route::get('/admin/plans', [AdminController::class,'plans'])->middleware(['auth'])->name('adminplans');
+Route::get('/admin/plans', [AdminController::class, 'adminplans'])->middleware(['auth'])->name('adminplans');
+Route::get('/admin/users', [AdminController::class, 'users'])->middleware(['auth'])->name('users');
 
 
 // Route::get('/profile', [UserController::class, 'profile'])->middleware(['auth'])->name('profile');

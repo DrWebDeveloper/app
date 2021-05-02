@@ -34,16 +34,16 @@
                         </a>
                     </li>
 
-                    <li class="{{ \Request::route()->getName() == 'plans' ? 'active' : '' }}">
+                    <li class="{{ \Request::route()->getName() == 'adminplans' ? 'active' : '' }}">
                         <a href="{{ route('adminplans') }}">
                             <i class="las la-coins"></i><span>Plan Settings</span>
                         </a>
                     </li>
 
-                    <li class="{{ \Request::route()->getName() == 'account' ? 'active' : '' }}">
-                        <a href="{{ route('account') }}" class="">
+                    <li class="{{ \Request::route()->getName() == 'users' ? 'active' : '' }}">
+                        <a href="{{ route('users') }}" class="">
                             <i class="las la-user"></i>
-                            <span class="">{{ __('all.account') }}</span>
+                            <span class="">{{ __('all.users') }}</span>
                         </a>
                     </li>
 

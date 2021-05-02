@@ -12,6 +12,7 @@ return [
     'contact' => 'Contacter',
     'affiliate' => 'Affilier',
     'remember' => 'Rappelles toi',
-    'login to account' => 'Please Enter Login Details'
+    'login to account' => 'Please Enter Login Details',
+    'users' => 'Users'
 
 ];
