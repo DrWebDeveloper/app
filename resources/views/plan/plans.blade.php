@@ -16,26 +16,26 @@
                                  <th class="text-center prc-wrap"></th>
                                  <th class="text-center prc-wrap">
                                     <div class="prc-box">
-                                       <div class="h3 pt-4 text-white">$19<small> / Per month</small>
-                                       </div> <span class="type text-white ">Basic</span>
+                                       <div class="h3 pt-4 text-white">{{ $plans[0]->price.env('CR') }}<small> / Per month</small>
+                                       </div> <span class="type text-white ">{{ $plans[0]->name }}</span>
                                     </div>
                                  </th>
                                  <th class="text-center prc-wrap">
                                     <div class="prc-box active">
-                                       <div class="h3 pt-4 text-white">$39<small> / Per month</small>
-                                       </div> <span class="type text-white ">Standard</span>
+                                       <div class="h3 pt-4 text-white">{{ $plans[1]->price.env('CR') }}<small> / Per month</small>
+                                       </div> <span class="type text-white ">{{ $plans[1]->name }}</span>
                                     </div>
                                  </th>
                                  <th class="text-center prc-wrap">
                                     <div class="prc-box">
-                                       <div class="h3 pt-4 text-white">$119<small> / Per month</small>
-                                       </div> <span class="type text-white ">Platinum</span>
+                                       <div class="h3 pt-4 text-white">{{ $plans[2]->price.env('CR') }}<small> / Per month</small>
+                                       </div> <span class="type text-white ">{{ $plans[2]->name }}</span>
                                     </div>
                                  </th>
                                  <th class="text-center prc-wrap">
                                     <div class="prc-box">
-                                       <div class="h3 pt-4 text-white">$219<small> / Per month</small>
-                                       </div> <span class="type text-white ">Premium</span>
+                                       <div class="h3 pt-4 text-white">{{ $plans[3]->price.env('CR') }}<small> / Per month</small>
+                                       </div> <span class="type text-white ">{{ $plans[3]->name }}</span>
                                     </div>
                                  </th>
                               </tr>

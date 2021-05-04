@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PlanController;
 
 
 /*
@@ -27,9 +28,8 @@ Route::get('/', function () {
 
 Route::get('/lang/{locale}', [SiteController::class,'lang'])->name('lang');
 
-Route::get('plans', function () {
-    return view('plans');
-})->name('plans');
+
+Route::get('plans', [PlanController::class, 'index'])->name('plans');
 
 Route::get('account', function () {
     return view('user.account');
@@ -70,7 +70,10 @@ Route::get('/dashboard', function () {
 // Admin Routes
 Route::get('/admin', [AdminController::class,'dashboard'])->middleware(['auth'])->name('admin');
 Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->middleware(['auth'])->name('admindashboard');
-Route::get('/admin/plans', [AdminController::class, 'adminplans'])->middleware(['auth'])->name('adminplans');
+Route::get('/admin/plans', [PlanController::class, 'show'])->middleware(['auth'])->name('adminplans');
+Route::get('/admin/edit/plan/{id}', [PlanController::class, 'edit'])->middleware(['auth'])->name('editplan');
+Route::post('/admin/update/plan/{pid}', [PlanController::class, 'update'])->middleware(['auth'])->name('updateplan');
+Route::get('/admin/delete/plan/{id}', [PlanController::class, 'destroy'])->middleware(['auth'])->name('deleteplan');
 Route::get('/admin/users', [AdminController::class, 'users'])->middleware(['auth'])->name('users');
 
 
@@ -94,7 +97,7 @@ Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 })->name('policy');
 
-Route::get('/subscribe/{pid}', [UserController::class, 'subscribe'])->middleware('auth')->name('subscribe');
+Route::get('/plan/subscribe/{pid}', [UserController::class, 'subscribe'])->middleware('auth')->name('subscribe');
 
 Route::get('/tos', function () {
     return view('tos');

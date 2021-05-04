@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Plan;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -30,7 +32,14 @@ class UserController extends Controller
     }
     // Subscription
     public function subscribe($pid){
-        return view('subscribe',['pid'=>$pid]);
+        // return $pid;
+        $date= (strtotime("+1 month", strtotime(Carbon::now())));
+
+        $plan=Plan::where('id',$pid)->first();
+        return view('plan.subscribe',[
+            'plan'=>$plan,
+            'date'=>$date
+            ]);
 
     }
 
