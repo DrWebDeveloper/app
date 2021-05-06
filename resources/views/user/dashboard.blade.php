@@ -10,7 +10,7 @@
             <div class="card card-block card-stretch card-height">
                 <div class="card-body">
                     <h3 class="mb-3">{{ Auth::user()->name }}</h3>
-                    <span>Free Member</span>
+                    <span>Membership: {{ Auth::user()->membership }}</span>
                 </div>
             </div>
         </div>

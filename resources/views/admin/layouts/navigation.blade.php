@@ -40,6 +40,12 @@
                         </a>
                     </li>
 
+                    <li class="{{ \Request::route()->getName() == 'adminpurchases' ? 'active' : '' }}">
+                            <a href="{{ route('adminpurchases') }}">
+                                <i class="las la-credit-card"></i><span>All Purchases</span>
+                            </a>
+                        </li>
+
                     <li class="{{ \Request::route()->getName() == 'users' ? 'active' : '' }}">
                         <a href="{{ route('users') }}" class="">
                             <i class="las la-user"></i>

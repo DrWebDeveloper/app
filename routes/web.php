@@ -75,6 +75,7 @@ Route::get('/admin/edit/plan/{id}', [PlanController::class, 'edit'])->middleware
 Route::post('/admin/update/plan/{pid}', [PlanController::class, 'update'])->middleware(['auth'])->name('updateplan');
 Route::get('/admin/delete/plan/{id}', [PlanController::class, 'destroy'])->middleware(['auth'])->name('deleteplan');
 Route::get('/admin/users', [AdminController::class, 'users'])->middleware(['auth'])->name('users');
+Route::get('/admin/purchases', [AdminController::class, 'purchases'])->middleware(['auth'])->name('adminpurchases');
 
 
 // Route::get('/profile', [UserController::class, 'profile'])->middleware(['auth'])->name('profile');
@@ -98,6 +99,8 @@ Route::get('/privacy-policy', function () {
 })->name('policy');
 
 Route::get('/plan/subscribe/{pid}', [UserController::class, 'subscribe'])->middleware('auth')->name('subscribe');
+Route::post('/plan/pay', [PlanController::class, 'pay'])->middleware('auth')->name('pay');
+Route::get('purchases', [UserController::class, 'purchases'])->middleware('auth')->name('purchases');
 
 Route::get('/tos', function () {
     return view('tos');

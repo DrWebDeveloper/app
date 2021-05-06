@@ -36,9 +36,17 @@
 
                     <li class="{{ \Request::route()->getName() == 'plans' ? 'active' : '' }}">
                         <a href="{{ route('plans') }}">
-                            <i class="las la-coins"></i><span>Plan</span>
+                            <i class="las la-coins"></i><span>Plans</span>
                         </a>
                     </li>
+
+                    @if (isset(Auth::user()->membership) && Auth::user()->membership == 'Premium')
+                        <li class="{{ \Request::route()->getName() == 'purchases' ? 'active' : '' }}">
+                            <a href="{{ route('purchases') }}">
+                                <i class="las la-credit-card"></i><span>Purchase History</span>
+                            </a>
+                        </li>
+                    @endif
 
                     <li class="{{ \Request::route()->getName() == 'account' ? 'active' : '' }}">
                         <a href="{{ route('account') }}" class="">
@@ -69,8 +77,7 @@
 
 
 
-                    {{--
-                        <ul id="pages-maintenance" class="iq-submenu collapse" data-parent="#otherpage">
+                    {{-- <ul id="pages-maintenance" class="iq-submenu collapse" data-parent="#otherpage">
                         </ul>
                         <a href="#otherpage" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
                                     <i>
@@ -517,20 +524,20 @@
                                 </div>
                             </li>
                             <li>@auth()
-                                @if (Auth::user()->admin == 1)
-                                <a href="{{ route('admin') }}">Admin Panel</a>
-                                @endif
+                                    @if (Auth::user()->admin == 1)
+                                        <a href="{{ route('admin') }}">Admin Panel</a>
+                                    @endif
 
 
                                 @endauth
-</li>
+                            </li>
                             <li class="nav-item nav-icon dropdown">
 
 
                                 <a href="#" class="search-toggle iq-user-toggle dropdown-toggle" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="{{ url('public/assets/images/user/one.png') }}" class="img-fluid rounded-small"
-                                        alt="user">
+                                    <img src="{{ url('public/assets/images/user/one.png') }}"
+                                        class="img-fluid rounded-small" alt="user">
                                 </a>
                                 <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <div class="card mb-0">
@@ -592,7 +599,9 @@
 
                                             </div>
 
-                                            <a href="{{ route('logout') }}" class="right-ic btn btn-primary btn-block   position-relative iq-logout" onclick="" role="button">
+                                            <a href="{{ route('logout') }}"
+                                                class="right-ic btn btn-primary btn-block   position-relative iq-logout"
+                                                onclick="" role="button">
                                                 {{ __('Log out') }}
                                             </a>
 

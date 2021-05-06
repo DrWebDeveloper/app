@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plan;
+use App\Models\User;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Stripe;
+use Session;
+
 
 class PlanController extends Controller
 {
@@ -12,6 +18,35 @@ class PlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function pay(Request $request)
+    {
+        $plan = Plan::where('id',$request->pid)->first();
+        // return $plan;
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create([
+            "amount" => $plan->price *100,
+            "currency" => "eur",
+            "source" => $request->stripeToken,
+            "description" => "Payment for ".$plan->name." Plan by ".$request->user()->name." User ID#". $request->user()->id
+        ]);
+        $purchase = new Purchase();
+        $purchase->plan = $plan->name;
+        $purchase->plan_id = $plan->id;
+        $purchase->user_id = $request->user()->id;
+        $purchase->paid = $plan->price;
+        $purchase->status = "Active";
+        $purchase->expiry = Carbon::now()->addMonth();
+        $purchase->save();
+        $user = User::find($request->user()->id);
+        $user->membership = 'Premium';
+        $user->save();
+        $plan = Plan::find($plan->id);
+        $plan->sales ++;
+        $plan->save();
+        return redirect()->back()->with('success', 'Payment has been successfully processed.');
+
+        return back();
+    }
     public function index()
     {
         //
