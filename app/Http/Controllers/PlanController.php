@@ -20,6 +20,9 @@ class PlanController extends Controller
      */
     public function pay(Request $request)
     {
+        if ($request->pid == 1) {
+            return redirect()->route('plans');
+        }
         $plan = Plan::where('id',$request->pid)->first();
         // return $plan;
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));

@@ -11,7 +11,12 @@
             <div class="card card-block card-stretch card-height">
                 <div class="card-body">
                     <h3 class="mb-3">{{ Auth::user()->fname.' '.Auth::user()->lname }}</h3>
-                    <span>Membership: {{ Auth::user()->membership }}</span>
+                    {{-- <span>Membership: {{ Auth::user()->membership }}</span> --}}
+                    @if (count(App\Models\Purchase::where('user_id',Auth::user()->id)->where('status','Active')->get()) > 0)
+                    <span>Membership: Premium</span>
+                    @else
+                    <span>Membership: Free</span>
+                    @endif
                 </div>
             </div>
         </div>
@@ -80,12 +85,19 @@
             <div class="card card-block card-stretch card-height">
                 <div class="card-header">
                     <div class="header-title">
-                        <h4 class="card-title">Education Traning</h4>
+                        <h4 class="card-title">Recent Subscriptions</h4>
                     </div>
                 </div>
                 <div class="card-body">
                     <ul class="list-inline p-0 m-0">
+                        @foreach ($purchases as $purchase)
                         <li class="d-flex align-items-center mb-3">
+                                    <span class="bg-info-light rounded-small iq-card-icon-small mr-3">1</span>
+                                    <p class="mb-0 font-size-16">Purchased {{ $purchase->plan }}</p>
+                                </li>
+
+                                @endforeach
+                        {{-- <li class="d-flex align-items-center mb-3">
                             <div class="profile-icon iq-icon-box  bg-danger-light svg-danger text-center">
                                 <svg width="24" height="20" viewBox="0 0 24 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -105,8 +117,9 @@
                                 <h5>South Kellergrove Junior</h5>
                                 <p class="mb-0">Junior High School | Class of 2008</p>
                             </div>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
+                        </li> --}}
+
+                        {{-- <li class="d-flex align-items-center mb-3">
                             <div class="profile-icon  iq-icon-box  bg-primary-light svg-primary text-center">
                                 <svg width="24" height="28" viewBox="0 0 24 28" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -175,14 +188,14 @@
                                 <h5>South Kellergrove Junior</h5>
                                 <p class="mb-0">Junior High School | Class of 2008</p>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
         </div>
         <div class="col-lg-7 col-md-6">
             <div class="row">
-                <div class="col-md-12 col-lg-6">
+                {{-- <div class="col-md-12 col-lg-6">
                     <div class="card card-block card-stretch card-height">
                         <div class="card-header">
                             <div class="header-title">
@@ -254,27 +267,27 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-12 col-lg-6">
+                </div> --}}
+                <div class="col-md-12 col-lg-12">
                     <div class="card card-block card-stretch card-height">
                         <div class="card-header">
                             <div class="header-title">
-                                <h4 class="card-title">Social</h4>
+                                <h4 class="card-title">Social Links</h4>
                             </div>
                         </div>
                         <div class="card-body">
                             <ul class="list-inline p-0 m-0">
                                 <li class="mb-3 d-flex">
                                     <span><i class="lab la-facebook-f text-primary font-size-20 mr-3"></i></span>
-                                    <p class="mb-0 font-size-16 line-height">fb.me/nataliedawson</p>
+                                    <p class="mb-0 font-size-16 line-height">{{ Auth::user()->facebook }}</p>
                                 </li>
                                 <li class="mb-3 d-flex">
                                     <span><i class="lab la-twitter text-info font-size-20 mr-3"></i></span>
-                                    <p class="mb-0 font-size-16 line-height">@nataliedawson</p>
+                                    <p class="mb-0 font-size-16 line-height">{{ Auth::user()->twitter }}</p>
                                 </li>
                                 <li class=" d-flex">
                                     <span><i class="lab la-instagram  text-danger font-size-20 mr-3"></i></span>
-                                    <p class="mb-0 font-size-16 line-height">@natalietweets</p>
+                                    <p class="mb-0 font-size-16 line-height">{{ Auth::user()->instagram }}</p>
                                 </li>
                             </ul>
                         </div>
@@ -284,21 +297,23 @@
                     <div class="card card-block card-stretch card-height">
                         <div class="card-header">
                             <div class="header-title">
-                                <h4 class="card-title">Experience</h4>
+                                <h4 class="card-title">Expired Subscriptions</h4>
                             </div>
                         </div>
                         <div class="card-body">
                             <ul class="list-inline mb-0 p-0">
+
+
+
+
+@foreach ($epurchases as $purchase)
                                 <li class="d-flex align-items-center mb-3">
-                                    <span class="bg-info-light rounded-small iq-card-icon-small mr-3">1</span>
-                                    <p class="mb-0 font-size-16">Software Engineer at Mathica Labs | 2018 -
-                                        present</p>
+                                    <span class="bg-info-light rounded-small iq-card-icon-small mr-3">{{ $purchase->id }}</span>
+                                    <p class="mb-0 font-size-16">{{ $purchase->plan }} Plan Expired on {{ date('d M Y h:i A',strtotime($purchase->expiry)) }}</p>
                                 </li>
-                                <li class="d-flex align-items-center">
-                                    <span class="bg-warning-light rounded-small iq-card-icon-small mr-3">2</span>
-                                    <p class="mb-0 font-size-16">Junior Software Engineer at Zimcore
-                                        Solutions | 2015 - 2018</p>
-                                </li>
+                                @endforeach
+
+
                             </ul>
                         </div>
                     </div>

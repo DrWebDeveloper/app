@@ -45,21 +45,25 @@ class UserController extends Controller
     public function saveprofilelinks(Request $request)
     {
         $user = User::find($request->user()->id);
-        $user->fname = $request->fname;
-        $user->lname = $request->lname;
-        $user->phone = $request->phone;
-        $user->gender = $request->gender;
-        $user->country = $request->country;
-        $user->address = $request->address;
+        $user->facebook = $request->facebook;
+        $user->twitter = $request->twitter;
+        $user->instagram = $request->instagram;
+        $user->youtube = $request->youtube;
         $user->save();
-        return back()->with('message','The Profile has been updated successfully!');
+        return back()->with('message','The Social Links are updated successfully!');
     }
 
     public function purchases()
     {
 
-        $purchases = User::find(Auth::user()->id)->purchases;
-        return view('user.purchases', ['purchases' => $purchases]);
+
+        $purchases = Purchase::where('user_id', Auth::user()->id)->where('status', 'Active')->get();
+        $epurchases = Purchase::where('user_id',Auth::user()->id)->where('status','Expired')->get();
+        return view('user.purchases', [
+            'purchases' => $purchases,
+            'epurchases' => $epurchases
+            ]);
+
         // return view('user.purchases',['purchases'=> $purchases]);
     }
 
@@ -72,7 +76,13 @@ class UserController extends Controller
     public function dashboard()
     {
         $setting = Setting::first()->get();
-        return view('user.dashboard',['setting'=>$setting]);
+        $purchases = Purchase::where('user_id', Auth::user()->id)->where('status', 'Active')->get();
+        $epurchases = Purchase::where('user_id', Auth::user()->id)->where('status', 'Expired')->get();
+        return view('user.dashboard',[
+            'setting'=>$setting,
+            'purchases'=>$purchases,
+            'epurchases'=>$epurchases
+            ]);
     }
 
     // User's Account

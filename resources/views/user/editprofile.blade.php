@@ -5,13 +5,7 @@
 @section('content')
 
     <div class="row">
-
-        <div class="col-lg-6">
-            <div class="iq-edit-list-data">
-                <div class="tab-content">
-                    <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
-                        <div class="card">
-                            @if (Session::has('message'))
+@if (Session::has('message'))
                                     <div class="alert text-white bg-primary" role="alert">
                                         <div class="iq-alert-text">{{ Session::get('message') }}
                                         </div>
@@ -20,6 +14,12 @@
                                         </button>
                                     </div>
                                 @endif
+        <div class="col-lg-6">
+            <div class="iq-edit-list-data">
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
+                        <div class="card">
+
                             <div class="card-header d-flex justify-content-between">
 
                                 <div class="iq-header-title">
@@ -281,15 +281,6 @@
                 <div class="tab-content">
                     <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
                         <div class="card">
-                            @if (Session::has('message'))
-                                    <div class="alert text-white bg-primary" role="alert">
-                                        <div class="iq-alert-text">{{ Session::get('message') }}
-                                        </div>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <i class="ri-close-line"></i>
-                                        </button>
-                                    </div>
-                                @endif
                             <div class="card-header d-flex justify-content-between">
 
                                 <div class="iq-header-title">
@@ -302,23 +293,19 @@
                                     @csrf
                             <div class="form-group">
                                 <label for="facebook">Facebook:</label>
-                                <input type="text" class="form-control" name="facebook" id="facebook" placeholder="www.facebook.com">
+                                <input type="text" class="form-control" name="facebook" value="{{ $user->facebook }}" placeholder="www.facebook.com">
                             </div>
                             <div class="form-group">
                                 <label for="twitter">Twitter:</label>
-                                <input type="text" class="form-control" name="twitter" id="twitter" placeholder="www.twitter.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="google">Google +:</label>
-                                <input type="text" class="form-control" name="google" id="google" placeholder="www.google.com">
+                                <input type="text" class="form-control" name="twitter" value="{{ $user->twitter }}" placeholder="www.twitter.com">
                             </div>
                             <div class="form-group">
                                 <label for="instagram">Instagram:</label>
-                                <input type="text" class="form-control" name="instagram" id="instagram" placeholder="www.instagram.com">
+                                <input type="text" class="form-control" name="instagram" value="{{ $user->instagram }}" placeholder="www.instagram.com">
                             </div>
                             <div class="form-group">
                                 <label for="youtube">You Tube:</label>
-                                <input type="text" class="form-control" name="youtube" id="youtube" placeholder="www.youtube.com">
+                                <input type="text" class="form-control" name="youtube" value="{{ $user->youtube }}" placeholder="www.youtube.com">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <button type="reset" class="btn iq-bg-danger">Cancel</button>

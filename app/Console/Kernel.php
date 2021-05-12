@@ -7,6 +7,7 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\Purchase;
+use App\Models\User;
 
 class Kernel extends ConsoleKernel
 {
@@ -37,7 +38,17 @@ class Kernel extends ConsoleKernel
                 $set->save();
                 // return $set;
             }
-        })->everySixHours();
+
+        })->everyMinute();
+
+        $schedule->call(function () {
+            $actions = Purchase::where('status', 'Active')->get();
+            foreach ($actions as $action) {
+                $user = User::find($action->user_id);
+                $user->membership = "Premium";
+                $user->save();
+            }
+        })->everyTwoMinutes();
     }
 
     /**

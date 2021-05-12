@@ -7,7 +7,6 @@ use App\Models\Plan;
 use App\Models\Setting;
 use App\Models\Purchase;
 use App\Models\Guide;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
@@ -18,16 +17,6 @@ class AdminController extends Controller
     //
     public function dashboard(){
 
-        // $purchases = Purchase::where('expiry','<=', Carbon::now())->get();
-        // foreach ($purchases as $purchase) {
-        //     // return $purchase;
-        //     $set = Purchase::find($purchase->id);
-        //     $set->status= "Expired";
-        //     $set->save();
-        //     return $set;
-        // }
-        // $set = Purchase::find($purchases->id);
-        // return $set;
         $check = Auth::user()->admin;
         $admin = Admin::first();
         if ($check == 1 ) {

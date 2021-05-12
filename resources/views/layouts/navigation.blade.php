@@ -379,7 +379,7 @@
 
                     </li>
                 </ul>
-                <a href="{{ App\Models\Setting::first()->banner_link }}"><img src="{{ url('public/images/'.App\Models\Setting::first()->banner) }}" class="cntr" alt=""></a>
+                <a href="{{ App\Models\Setting::first()->banner_link }}" target="_blank"><img src="{{ url('public/images/'.App\Models\Setting::first()->banner) }}" class="cntr" alt=""></a>
                 {{-- <div>
                             <a href="#"><img src="{{ url('public/assets/images/promo.png') }}" style="max-width: 108%;"></a>
                         </div> --}}
