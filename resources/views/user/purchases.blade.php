@@ -32,7 +32,13 @@
                                 <tr>
                                     <th scope="row">{{ $purchase->plan }}</th>
                                     <td>{{ $purchase->paid.env('CR') }}</td>
-                                    <td><span class="mt-2 badge badge-pill badge-danger">{{ $purchase->status }}</span></td>
+                                    <td>
+                                        @if ($purchase->expiry <= Carbon\Carbon::now())
+                                        <span class="badge badge-pill badge-warning">Expired</span>
+                                        @else
+                                        <span class="badge badge-pill badge-danger">{{ $purchase->status }}</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $purchase->created_at }}</td>
                                     <td>{{ $purchase->expiry }}</td>
 

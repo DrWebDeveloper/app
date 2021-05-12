@@ -3,7 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-
+use App\Models\Setting;
 class AppLayout extends Component
 {
     /**
@@ -13,6 +13,7 @@ class AppLayout extends Component
      */
     public function render()
     {
-        return view('layouts.app');
+        $setting = Setting::first();
+        return view('layouts.app',['setting'=>$setting]);
     }
 }

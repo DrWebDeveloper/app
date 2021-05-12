@@ -12,7 +12,7 @@
                             <div class="card-body">
                                 <div class="">
                                     <div class="">
-                                        <h2 class="mb-2">Hi, {{ Auth::user()->name ?? 'Guest'}}</h2>
+                                        <h2 class="mb-2">Hi, {{ Auth::user()->fname ?? 'Guest'}}</h2>
                                         <p class="pb-3">Welcome on Prospects Express dashboard. It’s good to have you here!</p>
                                     </div>
                                     <div class="d-flex flex-wrap align-items-center mt-4">

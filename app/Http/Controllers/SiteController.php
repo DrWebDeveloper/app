@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\App;
-
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -17,5 +17,9 @@ class SiteController extends Controller
         }
         print_r($locale);
         App::setLocale($locale);
+    }
+    public function contact(){
+        $setting = Setting::first();
+        return view('contact',['setting'=>$setting]);
     }
 }

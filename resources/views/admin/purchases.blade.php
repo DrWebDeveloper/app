@@ -32,14 +32,22 @@
                             @foreach ($purchases as $purchase)
                                 <tr>
                                     @php
-                                        $user = DB::table('users')->select('name')->where('id',$purchase->user_id)->get();
+                                        $user = DB::table('users')->select('fname','lname')->where('id',$purchase->user_id)->get();
                                     @endphp
-                                    <th scope="row">{{ $user[0]->name }}</th>
+                                    <th scope="row">{{ $user[0]->fname }} {{ $user[0]->lname }}</th>
                                     <th>{{ $purchase->plan }}</th>
                                     <td>{{ $purchase->paid.env('CR') }}</td>
-                                    <td><span class="mt-2 badge badge-pill badge-danger">{{ $purchase->status }}</span></td>
-                                    <td>{{ $purchase->created_at }}</td>
-                                    <td>{{ $purchase->expiry }}</td>
+
+
+                                    @if ($purchase->status == "Active")
+                                    <td><span class="badge badge-pill badge-danger">{{ $purchase->status }}</span></td>
+                                    @else
+                                    <td><span class="badge badge-pill badge-warning">{{ $purchase->status }}</span></td>
+                                    @endif
+
+
+                                    <td>{{ date('d M Y h:i A',strtotime($purchase->created_at)) }}</td>
+                                    <td>{{ date('d M Y h:i A',strtotime($purchase->expiry)) }} </td>
 
                                 </tr>
 

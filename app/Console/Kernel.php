@@ -4,6 +4,9 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use App\Models\Purchase;
 
 class Kernel extends ConsoleKernel
 {
@@ -25,6 +28,16 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            $purchases = Purchase::where('expiry', '<=', Carbon::now())->get();
+            foreach ($purchases as $purchase) {
+                // return $purchase;
+                $set = Purchase::find($purchase->id);
+                $set->status = "Expired";
+                $set->save();
+                // return $set;
+            }
+        })->everySixHours();
     }
 
     /**

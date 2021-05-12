@@ -5,49 +5,31 @@
 @section('content')
 
     <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body p-0">
-                    <div class="iq-edit-list usr-edit">
-                        <ul class="iq-edit-profile d-flex nav nav-pills">
-                            <li class="col-md-3 p-0">
-                                <a class="nav-link active" data-toggle="pill" href="#personal-information">
-                                    Personal Information
-                                </a>
-                            </li>
-                            <li class="col-md-3 p-0">
-                                <a class="nav-link" data-toggle="pill" href="#chang-pwd">
-                                    Change Password
-                                </a>
-                            </li>
-                            <li class="col-md-3 p-0">
-                                <a class="nav-link" data-toggle="pill" href="#emailandsms">
-                                    Email and SMS
-                                </a>
-                            </li>
-                            <li class="col-md-3 p-0">
-                                <a class="nav-link" data-toggle="pill" href="#manage-contact">
-                                    Manage Contact
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-12">
+
+        <div class="col-lg-6">
             <div class="iq-edit-list-data">
                 <div class="tab-content">
                     <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
                         <div class="card">
+                            @if (Session::has('message'))
+                                    <div class="alert text-white bg-primary" role="alert">
+                                        <div class="iq-alert-text">{{ Session::get('message') }}
+                                        </div>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <i class="ri-close-line"></i>
+                                        </button>
+                                    </div>
+                                @endif
                             <div class="card-header d-flex justify-content-between">
+
                                 <div class="iq-header-title">
                                     <h4 class="card-title">Personal Information</h4>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form>
-                                    <div class="form-group row align-items-center">
+                                <form method="POST" action="{{ route('save.profile') }}">
+                                    @csrf
+                                    {{-- <div class="form-group row align-items-center">
                                         <div class="col-md-12">
                                             <div class="profile-img-edit">
                                                 <div class="crm-profile-img-edit">
@@ -60,44 +42,51 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class=" row align-items-center">
                                         <div class="form-group col-sm-6">
-                                            <label for="name">Full Name:</label>
-                                            <input type="text" class="form-control" id="name" value="{{ $user->name }}">
+                                            <label for="name">First Name:</label>
+                                            <input type="text" class="form-control" name="fname" id="fname"
+                                                value="{{ $user->fname }}">
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                            <label for="lname">Last Name:</label>
+                                            <input type="text" class="form-control" name="lname" id="lname"
+                                                value="{{ $user->lname }}">
                                         </div>
                                         <div class="form-group col-sm-6">
                                             <label for="email">Email:</label>
-                                            <input type="email" class="form-control" id="email" value="{{ $user->email }}">
+                                            <input type="email" class="form-control" id="email" value="{{ $user->email }}"
+                                                disabled>
                                         </div>
-                                        <div class="form-group col-sm-6">
+                                        {{-- <div class="form-group col-sm-6">
                                             <label for="uname">User Name:</label>
                                             <input type="text" class="form-control" id="uname" value="Barry@01">
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group col-sm-6">
-                                            <label for="cname">City:</label>
-                                            <input type="text" class="form-control" id="cname" value="Atlanta">
+                                            <label for="phone">Phone:</label>
+                                            <input type="phone" class="form-control" name="phone" id="phone"
+                                                value="{{ $user->phone }}">
                                         </div>
                                         <div class="form-group col-sm-6">
                                             <label class="d-block">Gender:</label>
                                             <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="customRadio6" name="customRadio1"
-                                                    class="custom-control-input" checked="">
-                                                <label class="custom-control-label" for="customRadio6"> Male
+                                                <input type="radio" id="male" name="gender" class="custom-control-input" @if ($user->gender == 'male') checked="" @endif value="male">
+                                                <label class="custom-control-label" for="male"> Male
                                                 </label>
                                             </div>
                                             <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="customRadio7" name="customRadio1"
-                                                    class="custom-control-input">
-                                                <label class="custom-control-label" for="customRadio7">
+                                                <input type="radio" id="female" name="gender" class="custom-control-input"
+                                                    @if ($user->gender == 'female') checked="" @endif value="female">
+                                                <label class="custom-control-label" for="female">
                                                     Female </label>
                                             </div>
                                         </div>
-                                        <div class="form-group col-sm-6">
+                                        {{-- <div class="form-group col-sm-6">
                                             <label for="dob">Date Of Birth:</label>
-                                            <input class="form-control" id="dob" value="1984-01-24">
-                                        </div>
-                                        <div class="form-group col-sm-6">
+                                            <input type="date" name="dob" class="form-control" id="dob" value="{{ $user->dob }}">
+                                        </div> --}}
+                                        {{-- <div class="form-group col-sm-6">
                                             <label>Marital Status:</label>
                                             <select class="form-control" id="exampleFormControlSelect1">
                                                 <option selected="">Single</option>
@@ -116,18 +105,18 @@
                                                 <option>46-62</option>
                                                 <option>63 > </option>
                                             </select>
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group col-sm-6">
                                             <label>Country:</label>
-                                            <select class="form-control" id="exampleFormControlSelect3">
-                                                <option>Caneda</option>
-                                                <option>Noida</option>
-                                                <option selected="">USA</option>
-                                                <option>India</option>
-                                                <option>Africa</option>
+                                            <select class="form-control" name="country" id="country">
+                                                @foreach ($countries as $country)
+                                                    <option value="{{ $country }}"
+                                                        {{ $country == $user->country ? 'selected' : '' }}>
+                                                        {{ $country }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group col-sm-6">
+                                        {{-- <div class="form-group col-sm-6">
                                             <label>State:</label>
                                             <select class="form-control" id="exampleFormControlSelect4">
                                                 <option>California</option>
@@ -136,16 +125,13 @@
                                                 <option>Connecticut</option>
                                                 <option>Louisiana</option>
                                             </select>
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group col-sm-12">
                                             <label>Address:</label>
                                             <textarea class="form-control" name="address" rows="5"
-                                                style="line-height: 22px;">
-                                           37 Cardinal Lane
-                                           Petersburg, VA 23803
-                                           United States of America
-                                           Zip Code: 85001
-                                           </textarea>
+                                                style="line-height: 22px;" placeholder="Your Address">
+                                                   {{ $user->address }}
+                                                   </textarea>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -162,19 +148,23 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form method="POST" action="{{ route('save.profile') }}">
                                     <div class="form-group">
                                         <label for="cpass">Current Password:</label>
-                                        <a href="javascripe:void();" class="float-right">Forgot Password</a>
+                                        {{-- <a href="javascripe:void();" class="float-right">Forgot Password</a> --}}
                                         <input type="Password" class="form-control" id="cpass" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="npass">New Password:</label>
-                                        <input type="Password" class="form-control" id="npass" value="">
+                                        <input type="password" name="password" class="form-control" id="password"
+                                            placeholder="New Password" autocomplete="new-password" required />
+                                        {{-- <input type="Password" name="password" class="form-control" id="password" value=""> --}}
                                     </div>
                                     <div class="form-group">
                                         <label for="vpass">Verify Password:</label>
-                                        <input type="Password" class="form-control" id="vpass" value="">
+                                        <input type="password" name="password_confirmation" class="form-control"
+                                            id="password_confirmation" placeholder="New Password Again" required />
+                                        {{-- <input type="Password" class="form-control" id="vpass" value=""> --}}
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                     <button type="reset" class="btn iq-bg-danger">Cancel</button>
@@ -190,7 +180,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form method="POST" action="{{ route('save.profile.links') }}">
+                                    @csrf
                                     <div class="form-group row align-items-center">
                                         <label class="col-md-3" for="emailnotification">Email
                                             Notification:</label>
@@ -281,6 +272,57 @@
                                 </form>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                        <div class="col-lg-6">
+            <div class="iq-edit-list-data">
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
+                        <div class="card">
+                            @if (Session::has('message'))
+                                    <div class="alert text-white bg-primary" role="alert">
+                                        <div class="iq-alert-text">{{ Session::get('message') }}
+                                        </div>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <i class="ri-close-line"></i>
+                                        </button>
+                                    </div>
+                                @endif
+                            <div class="card-header d-flex justify-content-between">
+
+                                <div class="iq-header-title">
+                                    <h4 class="card-title">Social Links</h4>
+                                </div>
+                            </div>
+                <div class="card-body">
+                    <div class="acc-edit">
+                        <form method="POST" action="{{ route('save.profile.links') }}">
+                                    @csrf
+                            <div class="form-group">
+                                <label for="facebook">Facebook:</label>
+                                <input type="text" class="form-control" name="facebook" id="facebook" placeholder="www.facebook.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="twitter">Twitter:</label>
+                                <input type="text" class="form-control" name="twitter" id="twitter" placeholder="www.twitter.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="google">Google +:</label>
+                                <input type="text" class="form-control" name="google" id="google" placeholder="www.google.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="instagram">Instagram:</label>
+                                <input type="text" class="form-control" name="instagram" id="instagram" placeholder="www.instagram.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="youtube">You Tube:</label>
+                                <input type="text" class="form-control" name="youtube" id="youtube" placeholder="www.youtube.com">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                        </form>
                     </div>
                 </div>
             </div>

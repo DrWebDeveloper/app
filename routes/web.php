@@ -27,6 +27,7 @@ Route::get('/', function () {
 
 
 Route::get('/lang/{locale}', [SiteController::class,'lang'])->name('lang');
+Route::get('chuko', [UserController::class,'chuko'])->name('chuko');
 
 
 Route::get('plans', [PlanController::class, 'index'])->name('plans');
@@ -39,9 +40,7 @@ Route::get('help', function () {
     return view('help');
 })->name('help');
 
-Route::get('contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('contact', [SiteController::class, 'contact'])->name('contact');
 
 Route::get('affiliate', function () {
     return view('affiliate');
@@ -63,9 +62,12 @@ Route::get('register', function () {
     return view('user.register');
 })->middleware('guest')->name('register');
 
-Route::get('/dashboard', function () {
-    return view('user.dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [UserController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
+Route::post('/editprofile', [UserController::class,'saveprofile'])->middleware(['auth'])->name('save.profile');
+Route::post('/links', [UserController::class,'saveprofilelinks'])->middleware(['auth'])->name('save.profile.links');
+// Route::get('/dashboard', function () {
+//     return view('user.dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 // Admin Routes
 Route::get('/admin', [AdminController::class,'dashboard'])->middleware(['auth'])->name('admin');
@@ -77,6 +79,14 @@ Route::get('/admin/delete/plan/{id}', [PlanController::class, 'destroy'])->middl
 Route::get('/admin/users', [AdminController::class, 'users'])->middleware(['auth'])->name('users');
 Route::get('/admin/purchases', [AdminController::class, 'purchases'])->middleware(['auth'])->name('adminpurchases');
 
+Route::get('/admin/banner', [AdminController::class, 'banner'])->middleware(['auth'])->name('banner');
+Route::post('/admin/banner', [AdminController::class, 'editbanner'])->middleware(['auth'])->name('editbanner');
+Route::get('/admin/general', [AdminController::class, 'general'])->middleware(['auth'])->name('general');
+Route::post('/admin/general', [AdminController::class, 'editgeneral'])->middleware(['auth'])->name('editgeneral');
+Route::post('/admin/general/main', [AdminController::class, 'editlogo'])->middleware(['auth'])->name('editlogo');
+Route::post('/admin/general/sidebar', [AdminController::class, 'editlogosidebar'])->middleware(['auth'])->name('editlogosidebar');
+Route::get('/admin/help', [AdminController::class, 'help'])->middleware(['auth'])->name('admin.help');
+Route::post('/admin/help', [AdminController::class, 'edithelp'])->middleware(['auth'])->name('edit.help');
 
 // Route::get('/profile', [UserController::class, 'profile'])->middleware(['auth'])->name('profile');
 Route::get('/editprofile', [UserController::class, 'editprofile'])->middleware(['auth'])->name('editprofile');

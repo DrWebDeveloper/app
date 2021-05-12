@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 @section('title')
     My Profile
@@ -9,7 +10,7 @@
         <div class="col-lg-12 col-md-10 col-sm-6">
             <div class="card card-block card-stretch card-height">
                 <div class="card-body">
-                    <h3 class="mb-3">{{ Auth::user()->name }}</h3>
+                    <h3 class="mb-3">{{ Auth::user()->fname.' '.Auth::user()->lname }}</h3>
                     <span>Membership: {{ Auth::user()->membership }}</span>
                 </div>
             </div>
@@ -304,11 +305,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-5 col-md-7">
             <div class="card card-block card-stretch card-height">
                 <div class="card-header">
                     <div class="header-title">
-                        <h4 class="card-title">Professional Skills</h4>
+                        <h4 class="card-title">Loved by People</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -316,7 +317,7 @@
                         <li>
                             <div class="d-flex align-items-center justify-content-between mb-4 row">
                                 <div class="col-lg-4">
-                                    <p class="mb-0 font-size-16">Photoshop</p>
+                                    <p class="mb-0 font-size-16">Form Builder</p>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="iq-progress-bar bg-primary-light mt-2">
@@ -330,7 +331,7 @@
                         <li>
                             <div class="d-flex align-items-center justify-content-between mb-4 row">
                                 <div class="col-lg-4">
-                                    <p class="mb-0 font-size-16">Illustrator</p>
+                                    <p class="mb-0 font-size-16">Appointment Manager</p>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="iq-progress-bar bg-warning-light mt-2">
@@ -344,12 +345,12 @@
                         <li>
                             <div class="d-flex align-items-center justify-content-between mb-4 row">
                                 <div class="col-lg-4">
-                                    <p class="mb-0 font-size-16">Adobe XD</p>
+                                    <p class="mb-0 font-size-16">Copyrighting Tool</p>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="iq-progress-bar bg-success-light mt-2">
-                                        <span class="bg-success iq-progress progress-1" data-percent="55">
-                                            <span class="progress-text-one bg-success">55%</span>
+                                        <span class="bg-success iq-progress progress-1" data-percent="69">
+                                            <span class="progress-text-one bg-success">69%</span>
                                         </span>
                                     </div>
                                 </div>
@@ -358,7 +359,7 @@
                         <li>
                             <div class="d-flex align-items-center justify-content-between row">
                                 <div class="col-lg-4">
-                                    <p class="mb-0 font-size-16">Figma</p>
+                                    <p class="mb-0 font-size-16">Mailing & SMS</p>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="iq-progress-bar bg-info-light mt-2">
@@ -369,15 +370,29 @@
                                 </div>
                             </div>
                         </li>
+                        <li>
+                            <div class="d-flex align-items-center justify-content-between mt-4 row">
+                                <div class="col-lg-4">
+                                    <p class="mb-0 font-size-16">Digital Desktop</p>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="iq-progress-bar bg-danger-light mt-2">
+                                        <span class="bg-danger iq-progress progress-1" data-percent="75">
+                                            <span class="progress-text-one bg-success">75%</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-3 col-md-5">
             <div class="card card-block card-stretch card-height">
                 <div class="card-header">
                     <div class="header-title">
-                        <h4 class="card-title">Personal Skills</h4>
+                        <h4 class="card-title">Our Services</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -387,7 +402,7 @@
                                 <div class="badge-primary iq-number rounded-small text-center avatar-30">1
                                 </div>
                                 <div class="ml-4">
-                                    <p class="mb-0 font-size-16">Creative spirit</p>
+                                    <p class="mb-0 font-size-16">Form Builder</p>
                                 </div>
                             </div>
                         </li>
@@ -396,7 +411,7 @@
                                 <div class="badge-primary iq-number rounded-small text-center avatar-30">2
                                 </div>
                                 <div class="ml-4">
-                                    <p class="mb-0 font-size-16">Reliable and professional</p>
+                                    <p class="mb-0 font-size-16">Appointment Manager</p>
                                 </div>
                             </div>
                         </li>
@@ -405,7 +420,7 @@
                                 <div class="badge-primary iq-number rounded-small text-center avatar-30">3
                                 </div>
                                 <div class="ml-4">
-                                    <p class="mb-0 font-size-16">Time management</p>
+                                    <p class="mb-0 font-size-16">Copyrighting Tool</p>
                                 </div>
                             </div>
                         </li>
@@ -414,10 +429,21 @@
                                 <div class="badge-primary iq-number rounded-small text-center avatar-30">4
                                 </div>
                                 <div class="ml-4">
-                                    <p class="mb-0 font-size-16">Organized</p>
+                                    <p class="mb-0 font-size-16">Mailing & SMS</p>
                                 </div>
                             </div>
                         </li>
+
+                        <li class="mt-3">
+                            <div class="d-flex align-items-center">
+                                <div class="badge-primary iq-number rounded-small text-center avatar-30">5
+                                </div>
+                                <div class="ml-4">
+                                    <p class="mb-0 font-size-16">Digital Desktop</p>
+                                </div>
+                            </div>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -426,7 +452,7 @@
             <div class="card card-block card-stretch card-height">
                 <div class="card-header">
                     <div class="header-title">
-                        <h4 class="card-title">Contact Information</h4>
+                        <h4 class="card-title">Contact Us</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -451,7 +477,7 @@
                                             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
                                 </i></span>
-                            <p class="mb-0 font-size-16 line-height">+91 01234 56789</p>
+                            <p class="mb-0 font-size-16 line-height">{{ $setting[0]->site_phone }}</p>
                         </li>
                         <li class="mb-3 d-flex">
                             <span><i class="mr-3">
@@ -463,7 +489,7 @@
                                 </i></span>
                             <p class="mb-0 font-size-16 line-height"><a href="/cdn-cgi/l/email-protection"
                                     class="__cf_email__"
-                                    data-cfemail="412b2e292f0131332e31243335386f222e2c">john@property.com</a>
+                                    data-cfemail="412b2e292f0131332e31243335386f222e2c">{{ $setting[0]->site_mail }}</a>
                             </p>
                         </li>
                         <li class="mb-3 d-flex">
@@ -487,8 +513,7 @@
                                             d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                 </i></span>
-                            <p class="mb-0 font-size-16 line-height">9486 Roberts St.
-                                Monroe Township.</p>
+                            <p class="mb-0 font-size-16 line-height">{{ $setting[0]->site_address }}.</p>
                         </li>
                     </ul>
                 </div>

@@ -5,8 +5,8 @@
         <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
             <a href="{{ route('home') }}" class="header-logo">
 
-                <img src="{{ url('public/assets/images/logo.png') }}" class="img-fluid  light-logo" alt="logo">
-                <h5 class="logo-title text-white ml-3 mt-1">{{ config('app.name') }}</h5>
+                <img src="{{ url('public/images/logo/'.App\Models\Setting::first()->site_logo_sidebar) }}" class="img-fluid  light-logo" alt="logo"  style="height:58px !important">
+                {{-- <h5 class="logo-title text-white ml-3 mt-1">{{ config('app.name') }}</h5> --}}
                 <!--
 <img src="" class="img-fluid  light-logo" alt="logo"><h5 class="logo-title ml-3 mt-1">Prospects Express</h5>
  -->
@@ -29,50 +29,53 @@
 
                     <li class="{{ \Request::route()->getName() == 'home' ? 'active' : '' }}">
                         <a href="{{ route('home') }}" class="svg-icon">
-                            <i class="las la-home"></i>
+                            <i class="las la-home" style="font-size:22px"></i>
                             <span class="">{{ __('all.home') }}</span>
                         </a>
                     </li>
 
                     <li class="{{ \Request::route()->getName() == 'plans' ? 'active' : '' }}">
                         <a href="{{ route('plans') }}">
-                            <i class="las la-coins"></i><span>Plans</span>
+                            <i class="las la-coins" style="font-size:22px"></i><span>Plans</span>
                         </a>
                     </li>
 
                     @if (isset(Auth::user()->membership) && Auth::user()->membership == 'Premium')
                         <li class="{{ \Request::route()->getName() == 'purchases' ? 'active' : '' }}">
                             <a href="{{ route('purchases') }}">
-                                <i class="las la-credit-card"></i><span>Purchase History</span>
+                                <i class="las la-credit-card" style="font-size:22px"></i><span>Purchase History</span>
                             </a>
                         </li>
                     @endif
 
                     <li class="{{ \Request::route()->getName() == 'account' ? 'active' : '' }}">
                         <a href="{{ route('account') }}" class="">
-                            <i class="las la-user"></i>
+                            <i class="las la-user" style="font-size:22px"></i>
                             <span class="">{{ __('all.account') }}</span>
                         </a>
                     </li>
 
-                    <li class="{{ \Request::route()->getName() == 'affiliate' ? 'active' : '' }}">
+                    {{-- <li class="{{ \Request::route()->getName() == 'affiliate' ? 'active' : '' }}">
                         <a href="{{ route('affiliate') }}" class="">
-                            <i class="las la-user-tie"></i><span>{{ __('all.affiliate') }}</span>
+                            <i class="las la-user-tie" style="font-size:22px"></i><span>{{ __('all.affiliate') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
 
 
                     <li class="{{ \Request::route()->getName() == 'help' ? 'active' : '' }}">
                         <a href="{{ route('help') }}" class="">
-                            <i class="las la-pager"></i><span>{{ __('all.help') }}</span>
+                            <i class="las la-pager" style="font-size:22px"></i><span>{{ __('all.help') }}</span>
                         </a>
                     </li>
-
+{{--
                     <li class="{{ \Request::route()->getName() == 'contact' ? 'active' : '' }}">
                         <a href="{{ route('contact') }}" class="">
-                            <i class="las la-cubes"></i><span>{{ __('all.contact') }}</span>
+                            <i class="las la-cubes" style="font-size:22px"></i><span>{{ __('all.contact') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
+
+
+
 
 
 
@@ -86,8 +89,8 @@
                                         </svg>
                                     </i>
                                     <span>other page</span>
-                                    <i class="las la-angle-right iq-arrow-right arrow-active"></i>
-                                    <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
+                                    <i class="las la-angle-right iq-arrow-right arrow-active" style="font-size:22px"></i>
+                                    <i class="las la-angle-down iq-arrow-right arrow-hover" style="font-size:22px"></i>
                                 </a> --}}
 
 
@@ -97,153 +100,153 @@
 
                         <li class=" ">
                             <a href="#user" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                                <i class="las la-user-cog"></i><span>User Details</span>
-                                <i class="las la-angle-right iq-arrow-right arrow-active"></i>
-                                <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
+                                <i class="las la-user-cog" style="font-size:22px"></i><span>User Details</span>
+                                <i class="las la-angle-right iq-arrow-right arrow-active" style="font-size:22px"></i>
+                                <i class="las la-angle-down iq-arrow-right arrow-hover" style="font-size:22px"></i>
                             </a>
                             <ul id="user" class="iq-submenu collapse" data-parent="#otherpage">
                                 <li class="">
                                     <a href="{{ route('account') }}">
-                                        <i class="las la-id-card"></i><span>User Profile</span>
+                                        <i class="las la-id-card" style="font-size:22px"></i><span>User Profile</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="'public/app/user-add.html">
-                                        <i class="las la-user-plus"></i><span>User Add</span>
+                                        <i class="las la-user-plus" style="font-size:22px"></i><span>User Add</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="public/app/user-list.html">
-                                        <i class="las la-list-alt"></i><span>User List</span>
+                                        <i class="las la-list-alt" style="font-size:22px"></i><span>User List</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class=" ">
                             <a href="#ui" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                                <i class="lab la-uikit iq-arrow-left"></i><span>UI Elements</span>
-                                <i class="las la-angle-right iq-arrow-right arrow-active"></i>
-                                <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
+                                <i class="lab la-uikit iq-arrow-left" style="font-size:22px"></i><span>UI Elements</span>
+                                <i class="las la-angle-right iq-arrow-right arrow-active" style="font-size:22px"></i>
+                                <i class="las la-angle-down iq-arrow-right arrow-hover" style="font-size:22px"></i>
                             </a>
                             <ul id="ui" class="iq-submenu collapse" data-parent="#otherpage">
                                 <li class="">
                                     <a href="./ui-avatars.html">
-                                        <i class="las la-user-tie"></i><span>Avatars</span>
+                                        <i class="las la-user-tie" style="font-size:22px"></i><span>Avatars</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-alerts.html">
-                                        <i class="las la-exclamation-triangle"></i><span>Alerts</span>
+                                        <i class="las la-exclamation-triangle" style="font-size:22px"></i><span>Alerts</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-badges.html">
-                                        <i class="las la-id-badge"></i><span>Badges</span>
+                                        <i class="las la-id-badge" style="font-size:22px"></i><span>Badges</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-breadcrumb.html">
-                                        <i class="las la-ellipsis-h"></i><span>Breadcrumb</span>
+                                        <i class="las la-ellipsis-h" style="font-size:22px"></i><span>Breadcrumb</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-buttons.html">
-                                        <i class="las la-ticket-alt"></i><span>Buttons</span>
+                                        <i class="las la-ticket-alt" style="font-size:22px"></i><span>Buttons</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-buttons-group.html">
-                                        <i class="las la-object-group"></i><span>Buttons Group</span>
+                                        <i class="las la-object-group" style="font-size:22px"></i><span>Buttons Group</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-boxshadow.html">
-                                        <i class="las la-boxes"></i><span>Box Shadow</span>
+                                        <i class="las la-boxes" style="font-size:22px"></i><span>Box Shadow</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-colors.html">
-                                        <i class="las la-brush"></i><span>Colors</span>
+                                        <i class="las la-brush" style="font-size:22px"></i><span>Colors</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-cards.html">
-                                        <i class="las la-credit-card"></i><span>Cards</span>
+                                        <i class="las la-credit-card" style="font-size:22px"></i><span>Cards</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-carousel.html">
-                                        <i class="las la-sliders-h"></i><span>Carousel</span>
+                                        <i class="las la-sliders-h" style="font-size:22px"></i><span>Carousel</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-grid.html">
-                                        <i class="las la-th-large"></i><span>Grid</span>
+                                        <i class="las la-th-large" style="font-size:22px"></i><span>Grid</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-helper-classes.html">
-                                        <i class="las la-hands-helping"></i><span>Helper classes</span>
+                                        <i class="las la-hands-helping" style="font-size:22px"></i><span>Helper classes</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-images.html">
-                                        <i class="las la-image"></i><span>Images</span>
+                                        <i class="las la-image" style="font-size:22px"></i><span>Images</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-list-group.html">
-                                        <i class="las la-list-alt"></i><span>list Group</span>
+                                        <i class="las la-list-alt" style="font-size:22px"></i><span>list Group</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-media-object.html">
-                                        <i class="las la-photo-video"></i><span>Media</span>
+                                        <i class="las la-photo-video" style="font-size:22px"></i><span>Media</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-modal.html">
-                                        <i class="las la-columns"></i><span>Modal</span>
+                                        <i class="las la-columns" style="font-size:22px"></i><span>Modal</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-notifications.html">
-                                        <i class="las la-bell"></i><span>Notifications</span>
+                                        <i class="las la-bell" style="font-size:22px"></i><span>Notifications</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-pagination.html">
-                                        <i class="las la-ellipsis-h"></i><span>Pagination</span>
+                                        <i class="las la-ellipsis-h" style="font-size:22px"></i><span>Pagination</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-popovers.html">
-                                        <i class="las la-spinner"></i><span>Popovers</span>
+                                        <i class="las la-spinner" style="font-size:22px"></i><span>Popovers</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-progressbars.html">
-                                        <i class="las la-heading"></i><span>Progressbars</span>
+                                        <i class="las la-heading" style="font-size:22px"></i><span>Progressbars</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-typography.html">
-                                        <i class="las la-tablet"></i><span>Typography</span>
+                                        <i class="las la-tablet" style="font-size:22px"></i><span>Typography</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-tabs.html">
-                                        <i class="las la-tablet"></i><span>Tabs</span>
+                                        <i class="las la-tablet" style="font-size:22px"></i><span>Tabs</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-tooltips.html">
-                                        <i class="las la-magnet"></i><span>Tooltips</span>
+                                        <i class="las la-magnet" style="font-size:22px"></i><span>Tooltips</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./ui-embed-video.html">
-                                        <i class="las la-play-circle"></i><span>Video</span>
+                                        <i class="las la-play-circle" style="font-size:22px"></i><span>Video</span>
                                     </a>
                                 </li>
                             </ul>
@@ -251,29 +254,29 @@
 
                         <li class=" ">
                             <a href="#table" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                                <i class="las la-table iq-arrow-left"></i><span>Table</span>
-                                <i class="las la-angle-right iq-arrow-right arrow-active"></i>
-                                <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
+                                <i class="las la-table iq-arrow-left" style="font-size:22px"></i><span>Table</span>
+                                <i class="las la-angle-right iq-arrow-right arrow-active" style="font-size:22px"></i>
+                                <i class="las la-angle-down iq-arrow-right arrow-hover" style="font-size:22px"></i>
                             </a>
                             <ul id="table" class="iq-submenu collapse" data-parent="#otherpage">
                                 <li class="">
                                     <a href="./tables-basic.html">
-                                        <i class="las la-border-all"></i><span>Basic Tables</span>
+                                        <i class="las la-border-all" style="font-size:22px"></i><span>Basic Tables</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./table-data.html">
-                                        <i class="lab la-microsoft"></i><span>Data Table</span>
+                                        <i class="lab la-microsoft" style="font-size:22px"></i><span>Data Table</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./table-editable.html">
-                                        <i class="lab la-buromobelexperte"></i><span>Editable Table</span>
+                                        <i class="lab la-buromobelexperte" style="font-size:22px"></i><span>Editable Table</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./table-tree.html">
-                                        <i class="las la-tree"></i><span>Table Tree</span>
+                                        <i class="las la-tree" style="font-size:22px"></i><span>Table Tree</span>
                                     </a>
                                 </li>
                             </ul>
@@ -282,92 +285,92 @@
 
                         <li class=" ">
                             <a href="#auth" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                                <i class="las la-torah iq-arrow-left"></i><span>Authentication</span>
-                                <i class="las la-angle-right iq-arrow-right arrow-active"></i>
-                                <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
+                                <i class="las la-torah iq-arrow-left" style="font-size:22px"></i><span>Authentication</span>
+                                <i class="las la-angle-right iq-arrow-right arrow-active" style="font-size:22px"></i>
+                                <i class="las la-angle-down iq-arrow-right arrow-hover" style="font-size:22px"></i>
                             </a>
                             <ul id="auth" class="iq-submenu collapse" data-parent="#otherpage">
                                 <li class="">
                                     <a href="./signin.html">
-                                        <i class="las la-sign-in-alt"></i><span>Login</span>
+                                        <i class="las la-sign-in-alt" style="font-size:22px"></i><span>Login</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./signup.html">
-                                        <i class="las la-registered"></i><span>Register</span>
+                                        <i class="las la-registered" style="font-size:22px"></i><span>Register</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./forgetpassword.html">
-                                        <i class="las la-unlock-alt"></i><span>Recover Password</span>
+                                        <i class="las la-unlock-alt" style="font-size:22px"></i><span>Recover Password</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./auth-confirm-mail.html">
-                                        <i class="las la-envelope-square"></i><span>Confirm Mail</span>
+                                        <i class="las la-envelope-square" style="font-size:22px"></i><span>Confirm Mail</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./auth-lock-screen.html">
-                                        <i class="las la-lock"></i><span>Lock Screen</span>
+                                        <i class="las la-lock" style="font-size:22px"></i><span>Lock Screen</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class=" ">
                             <a href="{{ route('plans') }}">
-                                <i class="las la-coins"></i><span>Plan</span>
+                                <i class="las la-coins" style="font-size:22px"></i><span>Plan</span>
 
                             </a>
                             <ul id="pricing" class="iq-submenu collapse" data-parent="#otherpage">
                                 <li class="">
                                     <a href="{{ route('plans') }}">
-                                        <i class="las la-weight"></i><span>Pricing 1</span>
+                                        <i class="las la-weight" style="font-size:22px"></i><span>Pricing 1</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./pricing-1.html">
-                                        <i class="las la-crutch"></i><span>Pricing 2</span>
+                                        <i class="las la-crutch" style="font-size:22px"></i><span>Pricing 2</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class=" ">
                             <a href="#pages-error" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                                <i class="las la-exclamation-triangle"></i><span>Error</span>
-                                <i class="las la-angle-right iq-arrow-right arrow-active"></i>
-                                <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
+                                <i class="las la-exclamation-triangle" style="font-size:22px"></i><span>Error</span>
+                                <i class="las la-angle-right iq-arrow-right arrow-active" style="font-size:22px"></i>
+                                <i class="las la-angle-down iq-arrow-right arrow-hover" style="font-size:22px"></i>
                             </a>
                             <ul id="pages-error" class="iq-submenu collapse" data-parent="#otherpage">
                                 <li class="">
                                     <a href="./pages-error.html">
-                                        <i class="las la-bomb"></i><span>Error 404</span>
+                                        <i class="las la-bomb" style="font-size:22px"></i><span>Error 404</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="./pages-error-500.html">
-                                        <i class="las la-exclamation-circle"></i><span>Error 500</span>
+                                        <i class="las la-exclamation-circle" style="font-size:22px"></i><span>Error 500</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="">
                             <a href="./pages-invoice.html" class="">
-                                <i class="las la-receipt"></i><span>Invoice</span>
+                                <i class="las la-receipt" style="font-size:22px"></i><span>Invoice</span>
                             </a>
                             <ul id="pages-invoice" class="iq-submenu collapse" data-parent="#otherpage">
                             </ul>
                         </li>
                         <li class="">
                             <a href="{{ route('help') }}" class="">
-                                <i class="las la-pager"></i><span>Blank Page</span>
+                                <i class="las la-pager" style="font-size:22px"></i><span>Blank Page</span>
                             </a>
                             <ul id="pages-blank-page" class="iq-submenu collapse" data-parent="#otherpage">
                             </ul>
                         </li>
                         <li class="">
                             <a href="{{ route('contact') }}" class="">
-                                <i class="las la-cubes"></i><span>Maintenance</span>
+                                <i class="las la-cubes" style="font-size:22px"></i><span>Maintenance</span>
                             </a>
                             <ul id="pages-maintenance" class="iq-submenu collapse" data-parent="#otherpage">
                             </ul>
@@ -376,6 +379,7 @@
 
                     </li>
                 </ul>
+                <a href="{{ App\Models\Setting::first()->banner_link }}"><img src="{{ url('public/images/'.App\Models\Setting::first()->banner) }}" class="cntr" alt=""></a>
                 {{-- <div>
                             <a href="#"><img src="{{ url('public/assets/images/promo.png') }}" style="max-width: 108%;"></a>
                         </div> --}}
@@ -389,11 +393,11 @@
             <nav class="navbar navbar-expand-lg navbar-light">
 
                 <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
-                    <i class="ri-menu-line wrapper-menu"></i>
+                    <i class="ri-menu-line wrapper-menu" style="font-size:22px"></i>
                     <a href="{{ route('home') }}" class="header-logo">
-                        <img src="{{ url('public/assets/images/logo.png') }}" class="img-fluid  light-logo"
-                            alt="logo">
-                        <h5 class="logo-title ml-3 mt-1">Prospects Express</h5>
+                        <img src="{{ url('public/images/logo/'.App\Models\Setting::first()->site_logo) }}" class="img-fluid  light-logo"
+                            alt="logo" style="height:70px !important">
+                        {{-- <h5 class="logo-title ml-3 mt-1">Prospects Express</h5> --}}
 
                         <!-- < img src="{{ url('public/assets/images/logo.png') }}" class="img-fluid  light-logo" alt="logo"><h5 class="logo-title ml-3 mt-1"> Prospects Express</h5> -->
                     </a>
@@ -419,7 +423,7 @@
                         </div> --}}
                 <div class="iq-search-bar device-search" style="display:none">
                     <form action="#" class="searchbox">
-                        <a class="search-link" href="#"><i class="ri-search-line" style="display:none;"></i></a>
+                        <a class="search-link" href="#"><i class="ri-search-line" style="display:none;" style="font-size:22px"></i></a>
                         <input type="text" class="text search-input"
                             placeholder="Search for your document , people,...">
                     </form>
@@ -428,14 +432,14 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-label="Toggle navigation">
-                        <i class="ri-menu-3-line"></i>
+                        <i class="ri-menu-3-line" style="font-size:22px"></i>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto navbar-list align-items-center">
                             <li class="nav-item nav-icon search-content">
                                 <a href="#" class="search-toggle rounded" id="dropdownSearch" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
-                                    <i class="ri-search-line" style="display:none;"></i>
+                                    <i class="ri-search-line" style="display:none;" style="font-size:22px"></i>
                                 </a>
                                 <div class="iq-search-bar iq-sub-dropdown dropdown-menu"
                                     aria-labelledby="dropdownSearch">
@@ -443,7 +447,7 @@
                                         <div class="form-group mb-0 position-relative">
                                             <input type="text" class="text search-input font-size-12"
                                                 placeholder="type here to search...">
-                                            <a href="#" class="search-link"><i class="las la-search"></i></a>
+                                            <a href="#" class="search-link"><i class="las la-search" style="font-size:22px"></i></a>
                                         </div>
                                     </form>
                                 </div>
@@ -452,7 +456,7 @@
                                 <a href="#" class="search-toggle dropdown-toggle" style=" display: none;"
                                     id="dropdownMenuButtontwo" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
-                                    <i class="ri-notification-line"></i>
+                                    <i class="ri-notification-line" style="font-size:22px"></i>
                                     <span class="bg-primary dots"></span>
                                 </a>
                                 <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButtontwo">
@@ -547,7 +551,7 @@
                                                 <div class="profile-details">
                                                     <a href="{{ route('dashboard') }}" class="iq-sub-card">
                                                         <div class="rounded bg-info iq-card-icon-small">
-                                                            <i class="ri-file-user-line"></i>
+                                                            <i class="ri-file-user-line" style="font-size:22px"></i>
                                                         </div>
                                                         <div class="media-body">
                                                             <h5 class="mb-0">My Dashboard</h5>
@@ -559,7 +563,7 @@
                                                 <div class="profile-details">
                                                     <a href="{{ route('editprofile') }}" class="iq-sub-card">
                                                         <div class="rounded bg-success iq-card-icon-small">
-                                                            <i class="ri-profile-line"></i>
+                                                            <i class="ri-profile-line" style="font-size:22px"></i>
                                                         </div>
                                                         <div class="media-body">
                                                             <h5 class="mb-0">Edit Profile</h5>
@@ -572,7 +576,7 @@
                                                             <a href="{{ route('settings') }}"
                                                                 class="iq-sub-card">
                                                                 <div class="rounded bg-danger iq-card-icon-small">
-                                                                    <i class="ri-account-box-line"></i>
+                                                                    <i class="ri-account-box-line" style="font-size:22px"></i>
                                                                 </div>
                                                                 <div class="media-body">
                                                                     <h5 class="mb-0">Account</h5>
@@ -587,7 +591,7 @@
                                                     <a href="{{ route('settings') }}"
                                                         class="iq-sub-card border-none">
                                                         <div class="rounded bg-warning iq-card-icon-small">
-                                                            <i class="ri-lock-line"></i>
+                                                            <i class="ri-lock-line" style="font-size:22px"></i>
                                                         </div>
                                                         <div class="media-body">
                                                             <h5 class="mb-0">Settings</h5>
@@ -598,12 +602,21 @@
                                                 </div>
 
                                             </div>
-
+                                            @auth
                                             <a href="{{ route('logout') }}"
                                                 class="right-ic btn btn-primary btn-block   position-relative iq-logout"
                                                 onclick="" role="button">
                                                 {{ __('Log out') }}
                                             </a>
+                                            @endauth
+                                            @guest()
+
+                                            <a href="{{ route('login') }}"
+                                                class="right-ic btn btn-primary btn-block   position-relative iq-logout"
+                                                onclick="" role="button">
+                                                {{ __('Login') }}
+                                            </a>
+                                            @endguest
 
 
                                         </div>

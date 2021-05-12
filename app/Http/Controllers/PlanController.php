@@ -27,7 +27,7 @@ class PlanController extends Controller
             "amount" => $plan->price *100,
             "currency" => "eur",
             "source" => $request->stripeToken,
-            "description" => "Payment for ".$plan->name." Plan by ".$request->user()->name." User ID#". $request->user()->id
+            "description" => "Payment for ".$plan->name." Plan by ".$request->user()->fname.' '. $request->user()->lname." User ID#". $request->user()->id
         ]);
         $purchase = new Purchase();
         $purchase->plan = $plan->name;
@@ -35,7 +35,11 @@ class PlanController extends Controller
         $purchase->user_id = $request->user()->id;
         $purchase->paid = $plan->price;
         $purchase->status = "Active";
-        $purchase->expiry = Carbon::now()->addMonth();
+        if ($request->pid == 3) {
+            $purchase->expiry = Carbon::now()->addYear();
+        }else{
+            $purchase->expiry = Carbon::now()->addMonth();
+        }
         $purchase->save();
         $user = User::find($request->user()->id);
         $user->membership = 'Premium';

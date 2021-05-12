@@ -6,7 +6,7 @@
 
 
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
@@ -18,17 +18,17 @@
                         <form>
                             <div class="form-group">
                                 <label for="name">Name:</label>
-                                <input type="text" class="form-control" id="uname" value="{{ Auth::user()->name }}">
+                                <input type="text" class="form-control" id="uname" value="{{ Auth::user()->fname }}">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email Id:</label>
                                 <input type="email" class="form-control" id="email" value="{{ Auth::user()->email }}">
                             </div>
                             <div class="form-group">
-                                <label for="altemail">Alternate Email:</label>
-                                <input type="email" class="form-control" id="altemail" value="{{ Auth::user()->email }}">
+                                <label for="phone">Phone:</label>
+                                <input type="phone" class="form-control" id="phone" value="{{ Auth::user()->phone }}">
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="d-block">Language Known:</label>
                                 <div class="custom-control custom-checkbox custom-control-inline">
                                     <input type="checkbox" class="custom-control-input" id="english" checked="">
@@ -54,7 +54,7 @@
                                     <input type="checkbox" class="custom-control-input" id="italian">
                                     <label class="custom-control-label" for="italian">Italian</label>
                                 </div>
-                            </div>
+                            </div> --}}
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <button type="reset" class="btn iq-bg-danger">Cancel</button>
                         </form>
@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        {{-- <div class="col-lg-6">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
@@ -98,6 +98,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection

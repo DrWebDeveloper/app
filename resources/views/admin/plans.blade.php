@@ -22,6 +22,7 @@
                                 <th scope="col" style="background: #393B87 !important;">Plan Name</th>
                                 <th scope="col" style="background: #393B87 !important;">Price</th>
                                 <th scope="col" style="background: #393B87 !important;">Sales</th>
+                                <th scope="col" style="background: #393B87 !important;">Status</th>
                                 <th scope="col" style="background: #393B87 !important;">Action</th>
                             </tr>
                         </thead>
@@ -32,6 +33,13 @@
                                     <td>{{ $plan->name }}</td>
                                     <td>{{ $plan->price . env('CR') }}</td>
                                     <td>{{ $plan->sales }}</td>
+                                    <td>
+                                        @if ($plan->status == 0)
+                                            Inactive
+                                            @else
+                                            Active
+                                        @endif
+                                    </td>
                                     <td><a href="{{ route('editplan', ['id' => $plan->id]) }}">Edit</a> | <a
                                             href="{{ route('deleteplan', ['id' => $plan->id]) }}"
                                             class="text-danger">Delete</a></td>

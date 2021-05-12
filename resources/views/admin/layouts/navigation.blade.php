@@ -5,8 +5,8 @@
         <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
             <a href="{{ route('home') }}" class="header-logo">
 
-                <img src="{{ url('public/assets/images/logo.png') }}" class="img-fluid  light-logo" alt="logo">
-                <h5 class="logo-title text-white ml-3 mt-1">Admin Panel</h5>
+                <img src="{{ url('public/images/logo/'.App\Models\Setting::first()->site_logo_sidebar) }}" class="img-fluid  light-logo" alt="logo"  style="height:58px !important">
+                {{-- <h5 class="logo-title text-white ml-3 mt-1">Admin Panel</h5> --}}
                 <!--
 <img src="" class="img-fluid  light-logo" alt="logo"><h5 class="logo-title ml-3 mt-1">Prospects Express</h5>
  -->
@@ -34,6 +34,12 @@
                         </a>
                     </li>
 
+                    <li class="{{ \Request::route()->getName() == 'general' ? 'active' : '' }}">
+                        <a href="{{ route('general') }}">
+                            <i class="las la-coins"></i><span>General Settings</span>
+                        </a>
+                    </li>
+
                     <li class="{{ \Request::route()->getName() == 'adminplans' ? 'active' : '' }}">
                         <a href="{{ route('adminplans') }}">
                             <i class="las la-coins"></i><span>Plan Settings</span>
@@ -49,28 +55,28 @@
                     <li class="{{ \Request::route()->getName() == 'users' ? 'active' : '' }}">
                         <a href="{{ route('users') }}" class="">
                             <i class="las la-user"></i>
-                            <span class="">{{ __('all.users') }}</span>
+                            <span class="">{{ __('All Users') }}</span>
+                        </a>
+                    </li>
+{{--
+                    <li class="{{ \Request::route()->getName() == 'banner' ? 'active' : '' }}">
+                        <a href="{{ route('banner') }}" class="">
+                            <i class="las la-user-tie"></i><span>{{ __('Banner Settings') }}</span>
+                        </a>
+                    </li> --}}
+
+
+                    <li class="{{ \Request::route()->getName() == 'adminhelp' ? 'active' : '' }}">
+                        <a href="{{ route('admin.help') }}" class="">
+                            <i class="las la-pager"></i><span>{{ __('Help Section') }}</span>
                         </a>
                     </li>
 
-                    <li class="{{ \Request::route()->getName() == 'affiliate' ? 'active' : '' }}">
-                        <a href="{{ route('affiliate') }}" class="">
-                            <i class="las la-user-tie"></i><span>{{ __('all.affiliate') }}</span>
-                        </a>
-                    </li>
-
-
-                    <li class="{{ \Request::route()->getName() == 'help' ? 'active' : '' }}">
-                        <a href="{{ route('help') }}" class="">
-                            <i class="las la-pager"></i><span>{{ __('all.help') }}</span>
-                        </a>
-                    </li>
-
-                    <li class="{{ \Request::route()->getName() == 'contact' ? 'active' : '' }}">
+                    {{-- <li class="{{ \Request::route()->getName() == 'contact' ? 'active' : '' }}">
                         <a href="{{ route('contact') }}" class="">
                             <i class="las la-cubes"></i><span>{{ __('all.contact') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
 
 
 
@@ -390,9 +396,8 @@
                 <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
                     <i class="ri-menu-line wrapper-menu"></i>
                     <a href="{{ route('home') }}" class="header-logo">
-                        <img src="{{ url('public/assets/images/logo.png') }}" class="img-fluid  light-logo"
-                            alt="logo">
-                        <h5 class="logo-title ml-3 mt-1">Prospects Express</h5>
+                        <img src="{{ url('public/images/logo/'.App\Models\Setting::first()->site_logo) }}" class="img-fluid  light-logo" alt="logo"  style="height:70px !important">
+                        {{-- <h5 class="logo-title ml-3 mt-1">Prospects Express</h5> --}}
 
                         <!-- < img src="{{ url('public/assets/images/logo.png') }}" class="img-fluid  light-logo" alt="logo"><h5 class="logo-title ml-3 mt-1"> Prospects Express</h5> -->
                     </a>
