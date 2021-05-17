@@ -3,9 +3,9 @@
     User Profile
 @endsection
 @section('content')
-
     <div class="row">
-@if (Session::has('message'))
+        <div class="col-12">
+            @if (Session::has('message'))
                                     <div class="alert text-white bg-primary" role="alert">
                                         <div class="iq-alert-text">{{ Session::get('message') }}
                                         </div>
@@ -14,6 +14,10 @@
                                         </button>
                                     </div>
                                 @endif
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-lg-6">
             <div class="iq-edit-list-data">
                 <div class="tab-content">

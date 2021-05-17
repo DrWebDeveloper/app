@@ -43,6 +43,7 @@
                            <thead>
                                  <tr style="background: #393B87 !important;">
                                     {{-- <th>Profile</th> --}}
+                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Contact</th>
                                     <th>Email</th>
@@ -56,6 +57,7 @@
                                @foreach ($users as $user)
                                  <tr  style="border:1px solid #CCD3DC;">
                                     {{-- <td  style="border:1px solid #CCD3DC;" class="text-center"><img class="rounded img-fluid avatar-40" src="../assets/images/user/01.jpg" alt="profile"></td> --}}
+                                    <td  style="border:1px solid #CCD3DC;">{{ $user->id }}</td>
                                     <td  style="border:1px solid #CCD3DC;">{{ $user->fname.' '.$user->lname }}</td>
                                     <td  style="border:1px solid #CCD3DC;">{{ $user->phone }}</td>
                                     <td  style="border:1px solid #CCD3DC;">{{ $user->email }}</td>
@@ -68,7 +70,7 @@
                                         @endif
                                         {{-- <span class="badge iq-bg-primary">{{  }}</span> --}}
                                     </td>
-                                    <td>{{ date('d M Y', strtotime($user->created_at)) }}</td>
+                                    <td>{{ date('d M Y h:i A',strtotime($user->created_at)) }}</td>
                                     <td>
                                        <div class="flex align-items-center list-user-action">
                                           {{-- <a class="iq-bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add" href="#"><i class="ri-user-add-line"></i></a> --}}

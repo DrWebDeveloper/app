@@ -19,8 +19,16 @@ class AdminController extends Controller
 
         $check = Auth::user()->admin;
         $admin = Admin::first();
+        $users= User::take(6)->orderBy('id', 'desc')->get();
+        $purchases = Purchase::where('status','Active')->get();
+        $epurchases = Purchase::where('status','Expired')->get();
         if ($check == 1 ) {
-            return view('admin.dashboard',['setting'=>$admin]);
+            return view('admin.dashboard',[
+                'setting'=>$admin,
+                'users'=>$users,
+                'purchases' => $purchases,
+                'epurchases' => $epurchases
+            ]);
         }elseif ($check == 0) {
             return redirect()->route('home');
         }
@@ -41,7 +49,7 @@ class AdminController extends Controller
     }
     public function users(){
         // $users = User::all();
-        $users = DB::table('users')->paginate(10);
+        $users = DB::table('users')->orderBy('id','desc')->paginate(10);
         return view('admin.users',['users'=>$users]);
     }
     public function banner(){

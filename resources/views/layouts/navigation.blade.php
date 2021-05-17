@@ -40,20 +40,20 @@
                         </a>
                     </li>
 
-                    @if (isset(Auth::user()->membership) && Auth::user()->membership == 'Premium')
+                    {{-- @if (isset(Auth::user()->membership) && Auth::user()->membership == 'Premium')
                         <li class="{{ \Request::route()->getName() == 'purchases' ? 'active' : '' }}">
                             <a href="{{ route('purchases') }}">
                                 <i class="las la-credit-card" style="font-size:22px"></i><span>Purchase History</span>
                             </a>
                         </li>
-                    @endif
+                    @endif --}}
 
-                    <li class="{{ \Request::route()->getName() == 'account' ? 'active' : '' }}">
+                    {{-- <li class="{{ \Request::route()->getName() == 'account' ? 'active' : '' }}">
                         <a href="{{ route('account') }}" class="">
                             <i class="las la-user" style="font-size:22px"></i>
                             <span class="">{{ __('all.account') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     {{-- <li class="{{ \Request::route()->getName() == 'affiliate' ? 'active' : '' }}">
                         <a href="{{ route('affiliate') }}" class="">
@@ -560,6 +560,20 @@
                                                         </div>
                                                     </a>
                                                 </div>
+                                                @if (isset(Auth::user()->membership) && Auth::user()->membership == 'Premium')
+                                                <div class="profile-details">
+                                                    <a href="{{ route('purchases') }}" class="iq-sub-card">
+                                                        <div class="rounded bg-info iq-card-icon-small">
+                                                            <i class="ri-file-user-line" style="font-size:22px"></i>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h5 class="mb-0">My Subscriptions</h5>
+                                                            <p class="mb-0 font-size-14">View Purchase records
+                                                                details</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                @endif
                                                 <div class="profile-details">
                                                     <a href="{{ route('editprofile') }}" class="iq-sub-card">
                                                         <div class="rounded bg-success iq-card-icon-small">

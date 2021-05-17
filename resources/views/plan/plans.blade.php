@@ -102,7 +102,12 @@
                                  <td class="text-center">
                                      {{-- <i class="ri-close-line i_close"></i> --}}
                                  </td>
+                                 @auth
                                  <td class="text-center"> <a href="{{ route('home') }}" class="btn btn-primary btn-lg mt-3 disabled">Already Subscribed</a>
+                                 @endauth
+                                 @guest()
+                                     <td class="text-center"> <a href="{{ route('subscribe',['pid'=>1]) }}" class="btn btn-primary btn-lg mt-3">Purchase</a>
+                                 @endguest
                                  </td>
                                  <td class="text-center"> <a href="{{ route('subscribe',['pid'=>2]) }}" class="btn btn-primary btn-lg mt-3">Purchase</a>
                                  </td>

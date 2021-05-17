@@ -16,17 +16,27 @@
                 <div class="card-body">
                     <div class="acc-edit">
                         <form>
+                            <div class="row">
+                            <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="name">Name:</label>
-                                <input type="text" class="form-control" id="uname" value="{{ Auth::user()->fname }}">
+                                {{-- <input type="text" class="form-control" id="uname" value="{{ Auth::user()->fname }}"> --}}
+                                <div class="form-control">{{ Auth::user()->fname." ".Auth::user()->lname }} </div>
                             </div>
+                            </div>
+                            <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="email">Email Id:</label>
-                                <input type="email" class="form-control" id="email" value="{{ Auth::user()->email }}">
+                                {{-- <input type="email" class="form-control" id="email" value="{{ Auth::user()->email }}"> --}}
+                                <div class="form-control">{{ Auth::user()->email }} </div>
                             </div>
+                            </div>
+                            <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="phone">Phone:</label>
-                                <input type="phone" class="form-control" id="phone" value="{{ Auth::user()->phone }}">
+                                {{-- <input type="phone" class="form-control" id="phone" value="{{ Auth::user()->phone }}"> --}}
+                                <div class="form-control">{{ Auth::user()->phone }} </div>
+                            </div>
                             </div>
                             {{-- <div class="form-group">
                                 <label class="d-block">Language Known:</label>
@@ -55,8 +65,9 @@
                                     <label class="custom-control-label" for="italian">Italian</label>
                                 </div>
                             </div> --}}
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                            {{-- <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn iq-bg-danger">Cancel</button> --}}
+                            </div>
                         </form>
                     </div>
                 </div>
